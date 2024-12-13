@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Rush</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle Light/Dark Theme">🌙</button>
+
+    <!-- Player Selection Screen -->
+    <div id="player-selection" class="screen">
+        <h1>Select Number of Players</h1>
+        <div id="player-count">
+            <button class="player-btn" data-count="1">1 Player</button>
+            <button class="player-btn" data-count="2">2 Players</button>
+            <button class="player-btn" data-count="3">3 Players</button>
+            <button class="player-btn" data-count="4">4 Players</button>
+        </div>
+        <button id="to-subject-screen" disabled>Next</button>
+    </div>
+
+    <!-- Subject and Difficulty Selection Screen -->
+    <div id="subject-selection" class="screen hidden">
+        <h1>Select Subject</h1>
+        <div id="subject-options">
+            <button class="subject-btn" data-subject="HTML">HTML</button>
+            <button class="subject-btn" data-subject="CSS">CSS</button>
+            <button class="subject-btn" data-subject="JS">JavaScript</button>
+            <button class="subject-btn" data-subject="Mixed">Mixed</button>
+        </div>
+        <h2>Select Difficulty (Number of Questions per Player)</h2>
+        <div id="difficulty-options">
+            <button class="difficulty-btn" data-difficulty="3">3</button>
+            <button class="difficulty-btn" data-difficulty="4">4</button>
+            <button class="difficulty-btn" data-difficulty="5">5</button>
+        </div>
+        <div class="navigation-buttons">
+            <button id="back-to-player">Back</button>
+            <button id="to-game-screen" disabled>Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div id="game-header">
+            <h2 id="current-player">Player 1's Turn</h2>
+            <div id="timer">Time Left: <span id="time-left">15</span>s</div>
+            <div id="scores"></div>
+        </div>
+        <div id="question-container">
+            <h3 id="question-text">Question will appear here</h3>
+            <div id="options"></div>
+        </div>
+        <button id="submit-answer" disabled>Submit</button>
+    </div>
+
+    <!-- End Game Screen -->
+    <div id="end-screen" class="screen hidden">
+        <h1>Game Over</h1>
+        <h2>Winners:</h2>
+        <ul id="winners-list"></ul>
+        <h2>Scores:</h2>
+        <ol id="final-scores"></ol>
+        <div class="navigation-buttons">
+            <button id="new-game">New Game</button>
+            <button id="review-game">Review Answers</button>
+        </div>
+    </div>
+
+    <!-- Review Screen -->
+    <div id="review-screen" class="screen hidden">
+        <h1>Review Answers</h1>
+        <div id="review-content"></div>
+        <button id="back-to-end">Back</button>
+    </div>
+
+    <!-- Congrats Animation Container -->
+    <div id="congrats-animation" class="animation-container hidden">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="message">🎉 Congratulations! 🎉</div>
+    </div>
+
+    <!-- External Links Container -->
+    <div id="external-links">
+        <button id="github-btn" class="external-btn">GitHub</button>
+        <button id="onlyfans-btn" class="external-btn">OnlyFans</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

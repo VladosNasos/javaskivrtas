@@ -1,0 +1,382 @@
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333333;
+    --primary-color: #008cba;
+    --secondary-color: #005f5f;
+    --button-background: #008cba;
+    --button-text: #ffffff;
+    --button-disabled: #cccccc;
+    --selected-option-border: #ff9800;
+}
+
+body.dark-theme {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #bb86fc;
+    --secondary-color: #3700b3;
+    --button-background: #bb86fc;
+    --button-text: #121212;
+    --button-disabled: #424242;
+    --selected-option-border: #ff5722;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Screen Containers */
+.screen {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Headings */
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+/* Button Groups */
+#player-count, #subject-options, #difficulty-options, #options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    min-width: 100px;
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: var(--button-disabled);
+    cursor: not-allowed;
+}
+
+button.selected {
+    border: 2px solid var(--selected-option-border);
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.navigation-buttons button {
+    flex: 1;
+}
+
+/* Game Header */
+#game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#timer {
+    font-size: 18px;
+}
+
+#scores {
+    display: flex;
+    gap: 10px;
+}
+
+.score {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Question Container */
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question-text {
+    margin-bottom: 15px;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+    transition: background-color 0.3s, border-color 0.3s;
+    color: var(--text-color);
+}
+
+.option-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+}
+
+.option-btn.selected {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    border-color: var(--selected-option-border);
+}
+
+/* End Game Screen */
+#end-screen ul, #end-screen ol {
+    text-align: left;
+    margin: 0 auto 20px auto;
+    max-width: 400px;
+}
+
+#end-screen li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+/* Review Screen */
+#review-content {
+    max-height: 60vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#review-content div {
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+#review-content p {
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+#review-content .message {
+    font-weight: bold;
+}
+
+/* Congrats Animation */
+.animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.animation-container .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffeb3b;
+    top: 0;
+    animation: confetti-fall 3s linear infinite;
+}
+
+.animation-container .confetti:nth-child(1) {
+    left: 20%;
+    background-color: #f44336;
+    animation-delay: 0s;
+}
+
+.animation-container .confetti:nth-child(2) {
+    left: 40%;
+    background-color: #2196f3;
+    animation-delay: 0.5s;
+}
+
+.animation-container .confetti:nth-child(3) {
+    left: 60%;
+    background-color: #4caf50;
+    animation-delay: 1s;
+}
+
+.animation-container .confetti:nth-child(4) {
+    left: 80%;
+    background-color: #ff9800;
+    animation-delay: 1.5s;
+}
+
+.animation-container .confetti:nth-child(5) {
+    left: 50%;
+    background-color: #9c27b0;
+    animation-delay: 2s;
+}
+
+.animation-container .message {
+    position: relative;
+    z-index: 1001;
+    font-size: 36px;
+    margin-top: 20px;
+    animation: fade-in 2s ease-in-out;
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Message Fade-in Animation */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* External Links Container */
+#external-links {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.external-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    opacity: 0.7;
+}
+
+.external-btn:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .screen {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #game-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    button {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .animation-container .message {
+        font-size: 28px;
+    }
+
+    #external-links {
+        flex-direction: row;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .external-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+.animation-container.hidden {
+    display: none;
+}
